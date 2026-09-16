@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useGLTF } from "@react-three/drei";
 import { RigidBody } from "@react-three/rapier";
 import { Mesh } from "three";
+import { seededRandom } from "./utils";
 
 const MODEL_PATHS = [
   "./models/Apatosaurus.glb",
@@ -11,14 +12,6 @@ const MODEL_PATHS = [
   "./models/Triceratops.glb",
   "./models/Velociraptor.glb",
 ] as const;
-
-function seededRandom(seed: number) {
-  let s = seed;
-  return () => {
-    s = (s * 16807 + 0) % 2147483647;
-    return s / 2147483647;
-  };
-}
 
 function ModelInstance({
   path,
@@ -36,7 +29,7 @@ function ModelInstance({
   }, [scene]);
 
   return (
-    <RigidBody type="fixed">
+    <RigidBody type="fixed" colliders="hull">
       <group position={position}>
         <primitive object={scene} />
       </group>

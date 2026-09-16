@@ -6,7 +6,7 @@ import { useKeyboardControls } from "@react-three/drei";
 import { type Controls } from "./App";
 
 const ENGINE_FORCE = 200;
-const REVERSE_FORCE = 100;
+const REVERSE_FORCE = 150;
 const TURN_SPEED = 2.0;
 
 export function CarController({

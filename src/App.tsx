@@ -21,6 +21,7 @@ import { Models as Dinosaurs } from "./Dinosaurs";
 import { Barrels } from "./Barrels";
 import { TrafficCones } from "./TrafficCones";
 import { Bridge } from "./Bridge";
+import { Spheres } from "./Spheres";
 import { ControlsHint } from "./ControlsHint";
 import "./App.css";
 
@@ -60,10 +61,10 @@ export default function App() {
           castShadow
           shadow-mapSize-width={2048}
           shadow-mapSize-height={2048}
-          shadow-camera-left={-250}
-          shadow-camera-right={250}
-          shadow-camera-top={250}
-          shadow-camera-bottom={-250}
+          shadow-camera-left={-200}
+          shadow-camera-right={200}
+          shadow-camera-top={200}
+          shadow-camera-bottom={-200}
           shadow-camera-near={0.5}
           shadow-camera-far={200}
         />
@@ -82,32 +83,27 @@ export default function App() {
             <Pyramid position={[-20, 0, 0]} />
             <Dinosaurs />
             <Barrels />
+            <Spheres />
             <TrafficCones />
             <Bridge position={[0, 0, 30]} rotation-y={-Math.PI / 2} />
 
             <RigidBody type="fixed">
               <CuboidCollider
-                args={[0.5, 2.5, 250]}
-                position={[-250, 2.5, 0]}
+                args={[0.5, 2.5, 200]}
+                position={[-200, 2.5, 0]}
               />
             </RigidBody>
             <RigidBody type="fixed">
-              <CuboidCollider
-                args={[0.5, 2.5, 250]}
-                position={[250, 2.5, 0]}
-              />
+              <CuboidCollider args={[0.5, 2.5, 200]} position={[200, 2.5, 0]} />
             </RigidBody>
             <RigidBody type="fixed">
               <CuboidCollider
-                args={[250, 2.5, 0.5]}
-                position={[0, 2.5, -250]}
+                args={[200, 2.5, 0.5]}
+                position={[0, 2.5, -200]}
               />
             </RigidBody>
             <RigidBody type="fixed">
-              <CuboidCollider
-                args={[250, 2.5, 0.5]}
-                position={[0, 2.5, 250]}
-              />
+              <CuboidCollider args={[200, 2.5, 0.5]} position={[0, 2.5, 200]} />
             </RigidBody>
 
             <RigidBody type="fixed" friction={1}>
@@ -116,7 +112,7 @@ export default function App() {
                 rotation={[-Math.PI / 2, 0, 0]}
                 receiveShadow
               >
-                <boxGeometry args={[500, 500, 0.4]} />
+                <boxGeometry args={[400, 400, 0.4]} />
                 <meshStandardMaterial color="#667C49" />
               </mesh>
             </RigidBody>

@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { RigidBody } from "@react-three/rapier";
+import { RigidBody, CylinderCollider } from "@react-three/rapier";
 import { Color } from "three";
 
 const BARREL_COUNT = 10;
@@ -17,13 +17,14 @@ function Barrel({
   color: Color;
 }) {
   return (
-    <RigidBody position={position}>
+    <RigidBody position={position} colliders={false} restitution={0.3}>
       <mesh>
         <cylinderGeometry
           args={[BARREL_RADIUS, BARREL_RADIUS, BARREL_HEIGHT, 16]}
         />
         <meshStandardMaterial color={color} />
       </mesh>
+      <CylinderCollider args={[BARREL_HEIGHT / 2, BARREL_RADIUS]} />
     </RigidBody>
   );
 }
