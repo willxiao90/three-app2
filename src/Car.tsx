@@ -13,6 +13,8 @@ export interface CarRef {
   frontRightWheel: React.RefObject<Group>;
 }
 
+const MODEL_PATH = "./models/Sport-Car.glb";
+
 function WheelPrimitive({
   nodeName,
   outerRef,
@@ -20,7 +22,7 @@ function WheelPrimitive({
   nodeName: string;
   outerRef: React.RefObject<Group>;
 }) {
-  const { scene } = useGLTF("/models/Sport-Car.glb");
+  const { scene } = useGLTF(MODEL_PATH);
 
   const cloned = useMemo(() => {
     const original = scene.getObjectByName(nodeName);
@@ -41,7 +43,7 @@ function WheelPrimitive({
 }
 
 export const Model = forwardRef<CarRef>(function Model(props, ref) {
-  const { nodes, materials } = useGLTF("/models/Sport-Car.glb") as unknown as {
+  const { nodes, materials } = useGLTF(MODEL_PATH) as unknown as {
     nodes: Record<string, Mesh>;
     materials: Record<string, Material>;
   };
@@ -99,4 +101,4 @@ export const Model = forwardRef<CarRef>(function Model(props, ref) {
   );
 });
 
-useGLTF.preload("/models/Sport-Car.glb");
+useGLTF.preload(MODEL_PATH);

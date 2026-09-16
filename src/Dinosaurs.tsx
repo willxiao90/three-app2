@@ -4,12 +4,12 @@ import { RigidBody } from "@react-three/rapier";
 import { Mesh } from "three";
 
 const MODEL_PATHS = [
-  "/models/Apatosaurus.glb",
-  "/models/Parasaurolophus.glb",
-  "/models/Stegosaurus.glb",
-  "/models/T-Rex.glb",
-  "/models/Triceratops.glb",
-  "/models/Velociraptor.glb",
+  "./models/Apatosaurus.glb",
+  "./models/Parasaurolophus.glb",
+  "./models/Stegosaurus.glb",
+  "./models/T-Rex.glb",
+  "./models/Triceratops.glb",
+  "./models/Velociraptor.glb",
 ] as const;
 
 function seededRandom(seed: number) {

@@ -1,19 +1,20 @@
 {
-  "name": "three-app",
+  "name": "three-app-physics-and-shadows",
+  "description": "一个基于 Three.js 的 3D 物理模拟应用，支持车辆物理控制和场景阴影渲染。",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.8",
     "@react-three/fiber": "^9.7.0",
     "@react-three/rapier": "^2.2.0",
-    "leva": "^0.10.1",
     "r3f-perf": "^7.2.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
@@ -28,6 +29,7 @@
     "eslint": "^10.9.0",
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",
+    "gh-pages": "^6.3.0",
     "globals": "^17.11.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.67.0",
