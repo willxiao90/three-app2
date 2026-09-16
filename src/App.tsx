@@ -21,6 +21,7 @@ import { Models as Dinosaurs } from "./Dinosaurs";
 import { Barrels } from "./Barrels";
 import { TrafficCones } from "./TrafficCones";
 import { Bridge } from "./Bridge";
+import { ControlsHint } from "./ControlsHint";
 import "./App.css";
 
 const Controls = {
@@ -47,67 +48,83 @@ export default function App() {
   );
 
   return (
-    <Canvas shadows camera={{ position: [20, 20, 20], fov: 50 }}>
-      <Perf />
+    <div className="app-container">
+      <Canvas shadows camera={{ position: [20, 20, 20], fov: 50 }}>
+        <Perf />
 
-      <color args={["#A1C1CD"]} attach="background" />
-      <ambientLight intensity={2} />
-      <directionalLight
-        position={[0, 80, 0]}
-        intensity={1.5}
-        castShadow
-        shadow-mapSize-width={2048}
-        shadow-mapSize-height={2048}
-        shadow-camera-left={-250}
-        shadow-camera-right={250}
-        shadow-camera-top={250}
-        shadow-camera-bottom={-250}
-        shadow-camera-near={0.5}
-        shadow-camera-far={200}
-      />
+        <color args={["#A1C1CD"]} attach="background" />
+        <ambientLight intensity={2} />
+        <directionalLight
+          position={[0, 80, 0]}
+          intensity={1.5}
+          castShadow
+          shadow-mapSize-width={2048}
+          shadow-mapSize-height={2048}
+          shadow-camera-left={-250}
+          shadow-camera-right={250}
+          shadow-camera-top={250}
+          shadow-camera-bottom={-250}
+          shadow-camera-near={0.5}
+          shadow-camera-far={200}
+        />
 
-      <KeyboardControls map={keyMap}>
-        <Physics debug={false}>
-          <RigidBody ref={carBody}>
-            <Car ref={carRef} />
-          </RigidBody>
+        <KeyboardControls map={keyMap}>
+          <Physics debug={false}>
+            <RigidBody ref={carBody}>
+              <Car ref={carRef} />
+            </RigidBody>
 
-          <CarController carBody={carBody} />
-          <WheelRotation carBody={carBody} carRef={carRef} />
-          <CameraFollow carBody={carBody} />
-          <CarShadow carBody={carBody} />
+            <CarController carBody={carBody} />
+            <WheelRotation carBody={carBody} carRef={carRef} />
+            <CameraFollow carBody={carBody} />
+            <CarShadow carBody={carBody} />
 
-          <Pyramid position={[-20, 0, 0]} />
-          <Dinosaurs />
-          <Barrels />
-          <TrafficCones />
-          <Bridge position={[0, 0, 30]} rotation-y={-Math.PI / 2} />
+            <Pyramid position={[-20, 0, 0]} />
+            <Dinosaurs />
+            <Barrels />
+            <TrafficCones />
+            <Bridge position={[0, 0, 30]} rotation-y={-Math.PI / 2} />
 
-          <RigidBody type="fixed">
-            <CuboidCollider args={[0.5, 2.5, 250]} position={[-250, 2.5, 0]} />
-          </RigidBody>
-          <RigidBody type="fixed">
-            <CuboidCollider args={[0.5, 2.5, 250]} position={[250, 2.5, 0]} />
-          </RigidBody>
-          <RigidBody type="fixed">
-            <CuboidCollider args={[250, 2.5, 0.5]} position={[0, 2.5, -250]} />
-          </RigidBody>
-          <RigidBody type="fixed">
-            <CuboidCollider args={[250, 2.5, 0.5]} position={[0, 2.5, 250]} />
-          </RigidBody>
+            <RigidBody type="fixed">
+              <CuboidCollider
+                args={[0.5, 2.5, 250]}
+                position={[-250, 2.5, 0]}
+              />
+            </RigidBody>
+            <RigidBody type="fixed">
+              <CuboidCollider
+                args={[0.5, 2.5, 250]}
+                position={[250, 2.5, 0]}
+              />
+            </RigidBody>
+            <RigidBody type="fixed">
+              <CuboidCollider
+                args={[250, 2.5, 0.5]}
+                position={[0, 2.5, -250]}
+              />
+            </RigidBody>
+            <RigidBody type="fixed">
+              <CuboidCollider
+                args={[250, 2.5, 0.5]}
+                position={[0, 2.5, 250]}
+              />
+            </RigidBody>
 
-          <RigidBody type="fixed" friction={1}>
-            <mesh
-              position={[0, -0.2, 0]}
-              rotation={[-Math.PI / 2, 0, 0]}
-              receiveShadow
-            >
-              <boxGeometry args={[500, 500, 0.4]} />
-              <meshStandardMaterial color="#667C49" />
-            </mesh>
-          </RigidBody>
-        </Physics>
-      </KeyboardControls>
-    </Canvas>
+            <RigidBody type="fixed" friction={1}>
+              <mesh
+                position={[0, -0.2, 0]}
+                rotation={[-Math.PI / 2, 0, 0]}
+                receiveShadow
+              >
+                <boxGeometry args={[500, 500, 0.4]} />
+                <meshStandardMaterial color="#667C49" />
+              </mesh>
+            </RigidBody>
+          </Physics>
+        </KeyboardControls>
+      </Canvas>
+
+      <ControlsHint />
+    </div>
   );
 }
