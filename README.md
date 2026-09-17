@@ -1,6 +1,6 @@
 # three-app-physics-and-shadows
 
-一个基于 Three.js 的 3D 物理模拟应用，支持车辆物理控制和场景阴影渲染。
+一个基于 Three.js 的 3D 物理模拟应用，可以控制小车撞击各种障碍物。
 
 [在线预览](https://willxiao90.github.io/three-app-physics-and-shadows/)
 
@@ -15,7 +15,7 @@
 ## 功能特性
 
 - 基于 Rapier 引擎的刚体物理模拟
-- 键盘控制赛车驾驶，以及相机自动跟随
+- 键盘控制小车行驶，以及相机自动跟随
 - 各种类型的障碍物：积木堆、桥梁、交通锥、油桶、皮球
 - 为场景物体和车辆添加阴影
 
