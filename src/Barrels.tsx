@@ -17,7 +17,7 @@ function Barrel({
   color: Color;
 }) {
   return (
-    <RigidBody position={position} colliders={false} restitution={0.3}>
+    <RigidBody position={position} colliders={false} restitution={0.2}>
       <mesh>
         <cylinderGeometry
           args={[BARREL_RADIUS, BARREL_RADIUS, BARREL_HEIGHT, 16]}

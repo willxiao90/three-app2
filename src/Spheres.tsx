@@ -17,7 +17,7 @@ function Sphere({
     <RigidBody
       colliders={false}
       position={position}
-      restitution={0.8}
+      restitution={2}
       gravityScale={0.3}
     >
       <mesh>
