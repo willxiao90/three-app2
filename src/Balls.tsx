@@ -29,7 +29,7 @@ function Sphere({
   );
 }
 
-export function Spheres(props: React.ComponentProps<"group">) {
+export function Balls(props: React.ComponentProps<"group">) {
   const data = useMemo(() => {
     const rand = seededRandom(123);
     return Array.from({ length: SPHERE_COUNT }, (_, i) => {

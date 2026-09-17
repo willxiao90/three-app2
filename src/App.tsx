@@ -13,7 +13,7 @@ import {
 import { Perf } from "r3f-perf";
 import { Model as Car, type CarRef } from "./Car";
 import { CarShadow } from "./CarShadow";
-import { Pyramid } from "./Pyramid";
+import { Blocks } from "./Blocks";
 import { WheelRotation } from "./WheelRotation";
 import { CarController } from "./CarController";
 import { CameraFollow } from "./CameraFollow";
@@ -21,7 +21,7 @@ import { Models as Dinosaurs } from "./Dinosaurs";
 import { Barrels } from "./Barrels";
 import { TrafficCones } from "./TrafficCones";
 import { Bridge } from "./Bridge";
-import { Spheres } from "./Spheres";
+import { Balls } from "./Balls";
 import { ControlsHint } from "./ControlsHint";
 import "./App.css";
 
@@ -54,6 +54,7 @@ export default function App() {
         <Perf />
 
         <color args={["#A1C1CD"]} attach="background" />
+
         <ambientLight intensity={2} />
         <directionalLight
           position={[0, 80, 0]}
@@ -71,41 +72,60 @@ export default function App() {
 
         <KeyboardControls map={keyMap}>
           <Physics debug={false}>
+            {/* 小车 */}
             <RigidBody ref={carBody}>
               <Car ref={carRef} />
             </RigidBody>
 
+            {/* 车辆伪阴影 */}
+            <CarShadow carBody={carBody} />
+
+            {/* 车辆控制 */}
             <CarController carBody={carBody} />
             <WheelRotation carBody={carBody} carRef={carRef} />
             <CameraFollow carBody={carBody} />
-            <CarShadow carBody={carBody} />
 
-            <Pyramid position={[-20, 0, 0]} />
-            <Dinosaurs />
+            {/* 各种障碍物 */}
+            <Blocks position={[-20, 0, 0]} />
             <Barrels />
-            <Spheres />
+            <Balls />
             <TrafficCones />
             <Bridge position={[0, 0, 30]} rotation-y={-Math.PI / 2} />
 
+            {/* 恐龙模型 */}
+            <Dinosaurs />
+
+            {/* 围墙 */}
             <RigidBody type="fixed">
               <CuboidCollider
                 args={[0.5, 2.5, 200]}
                 position={[-200, 2.5, 0]}
+                restitution={0}
               />
             </RigidBody>
             <RigidBody type="fixed">
-              <CuboidCollider args={[0.5, 2.5, 200]} position={[200, 2.5, 0]} />
+              <CuboidCollider
+                args={[0.5, 2.5, 200]}
+                position={[200, 2.5, 0]}
+                restitution={0}
+              />
             </RigidBody>
             <RigidBody type="fixed">
               <CuboidCollider
                 args={[200, 2.5, 0.5]}
                 position={[0, 2.5, -200]}
+                restitution={0}
               />
             </RigidBody>
             <RigidBody type="fixed">
-              <CuboidCollider args={[200, 2.5, 0.5]} position={[0, 2.5, 200]} />
+              <CuboidCollider
+                args={[200, 2.5, 0.5]}
+                position={[0, 2.5, 200]}
+                restitution={0}
+              />
             </RigidBody>
 
+            {/* 地板 */}
             <RigidBody type="fixed" friction={1}>
               <mesh
                 position={[0, -0.2, 0]}

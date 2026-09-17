@@ -34,7 +34,7 @@ function generatePyramidBlocks() {
   return blocks;
 }
 
-export function Pyramid(props: React.ComponentProps<"group">) {
+export function Blocks(props: React.ComponentProps<"group">) {
   const blocks = useMemo(() => generatePyramidBlocks(), []);
   const meshRef = useRef<InstancedMesh>(null);
 
