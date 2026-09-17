@@ -1,8 +1,8 @@
-# three-app-physics-and-shadows
+# three-app2
 
 一个基于 Three.js 的 3D 物理模拟应用，可以控制小车撞击各种障碍物。
 
-[在线预览](https://willxiao90.github.io/three-app-physics-and-shadows/)
+[在线预览](https://willxiao90.github.io/three-app2/)
 
 ## 技术栈
 
